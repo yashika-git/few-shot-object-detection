@@ -26,7 +26,7 @@ def generate_seeds(args):
     data = []
     data_per_cat = {c: [] for c in VOC_CLASSES}
     for year in [2007, 2012]:
-        data_file = "datasets/VOC{}/ImageSets/Main/trainval.txt".format(year)
+        data_file = "./few-shot-object-detection/datasets/VOC{}/ImageSets/Main/trainval.txt".format(year)
         with PathManager.open(data_file) as f:
             fileids = np.loadtxt(f, dtype=np.str).tolist()
         data.extend(fileids)
