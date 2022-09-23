@@ -186,7 +186,7 @@ def register_all_lvis(root="datasets"):
 
 
 # ==== Predefined splits for PASCAL VOC ===========
-def register_all_pascal_voc(root="../input/dataset"):
+def register_all_pascal_voc(root="kaggle/input/dataset"):
     # SPLITS = [
     #     ("voc_2007_trainval", "VOC2007", "trainval"),
     #     ("voc_2007_train", "VOC2007", "train"),
