@@ -21,7 +21,7 @@ def load_filtered_voc_instances(
     is_shots = "shot" in name
     if is_shots:
         fileids = {}
-        split_dir = os.path.join("datasets", "vocsplit")
+        split_dir = os.path.join("/kaggle/input/dataset", "vocsplit")
         if "seed" in name:
             shot = name.split("_")[-2].split("shot")[0]
             seed = int(name.split("_seed")[-1])
@@ -53,7 +53,7 @@ def load_filtered_voc_instances(
             dicts_ = []
             for fileid in fileids_:
                 year = "2012" if "_" in fileid else "2007"
-                dirname = os.path.join("datasets", "VOC{}".format(year))
+                dirname = os.path.join("/kaggle/input/dataset", "VOC{}".format(year))
                 anno_file = os.path.join(
                     dirname, "Annotations", fileid + ".xml"
                 )
