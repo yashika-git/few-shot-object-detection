@@ -26,7 +26,7 @@ def generate_seeds(args):
     data = []
     data_per_cat = {c: [] for c in VOC_CLASSES}
     for year in [2007, 2012]:
-        data_file = "kaggle/working/few-shot-object-detection/datasets/VOC{}/ImageSets/Main/trainval.txt".format(year)
+        data_file = "kaggle/input/dataset/VOC{}/ImageSets/Main/trainval.txt".format(year)
         with PathManager.open(data_file) as f:
             fileids = np.loadtxt(f, dtype=np.str).tolist()
         data.extend(fileids)
@@ -65,7 +65,7 @@ def generate_seeds(args):
                         if num_objs >= diff_shot:
                             break
                 result[c][shot] = copy.deepcopy(c_data)
-        save_path = "datasets/vocsplit/seed{}".format(i)
+        save_path = "/kaggle/working/dataset/vocsplit/seed{}".format(i)
         os.makedirs(save_path, exist_ok=True)
         for c in result.keys():
             for shot in result[c].keys():
