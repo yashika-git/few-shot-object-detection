@@ -65,7 +65,8 @@ def generate_seeds(args):
                         if num_objs >= diff_shot:
                             break
                 result[c][shot] = copy.deepcopy(c_data)
-        save_path = "/kaggle/working/dataset/vocsplit/seed{}".format(i)
+#         save_path = "/kaggle/working/dataset/vocsplit/seed{}".format(i)
+        save_path = "/kaggle/working/dataset/vocsplit"
         os.makedirs(save_path, exist_ok=True)
         for c in result.keys():
             for shot in result[c].keys():
