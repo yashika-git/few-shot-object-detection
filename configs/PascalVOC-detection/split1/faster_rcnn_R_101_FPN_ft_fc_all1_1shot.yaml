@@ -1,6 +1,6 @@
 _BASE_: "../../Base-RCNN-FPN.yaml"
 MODEL:
-  WEIGHTS: "checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_base1/model_reset_surgery.pth"
+WEIGHTS: "/kaggle/working/few-shot-object-detection/checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_base1/model_reset_surgery.pth"
   MASK_ON: False
   RESNETS:
     DEPTH: 101
@@ -24,4 +24,4 @@ SOLVER:
   MAX_ITER: 4000
   CHECKPOINT_PERIOD: 500
   WARMUP_ITERS: 0
-OUTPUT_DIR: "checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_fc_all1_1shot_randnovel"
+OUTPUT_DIR: "/kaggle/working/few-shot-object-detection/checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_fc_all1_1shot_randnovel"
