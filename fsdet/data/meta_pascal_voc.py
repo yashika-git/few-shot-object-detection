@@ -53,7 +53,7 @@ def load_filtered_voc_instances(
             dicts_ = []
             for fileid in fileids_:
                 year = "2012" if "_" in fileid else "2007"
-                dirname = os.path.join("/kaggle/working/dataset", "VOC{}".format(year))
+                dirname = os.path.join("/kaggle/input/dataset", "VOC{}".format(year))
                 anno_file = os.path.join(
                     dirname, "Annotations", fileid + ".xml"
                 )
