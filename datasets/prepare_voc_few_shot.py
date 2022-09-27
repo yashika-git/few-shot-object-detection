@@ -13,26 +13,26 @@ VOC_CLASSES = ['aeroplane', 'bicycle', 'bird', 'boat', 'bottle', 'bus', 'car',
                'tvmonitor']  # fmt: skip
 
 
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--seeds", type=int, nargs="+", default=[1, 20], help="Range of seeds"
-    )
-    args = parser.parse_args()
-    return args
+# def parse_args():
+#     parser = argparse.ArgumentParser()
+#     parser.add_argument(
+#         "--seeds", type=int, nargs="+", default=[1, 20], help="Range of seeds"
+#     )
+#     args = parser.parse_args()
+#     return args
 
 
-def generate_seeds(args):
+def generate_seeds():
     data = []
     data_per_cat = {c: [] for c in VOC_CLASSES}
-    for year in [2007, 2012]:
-        data_file = "kaggle/input/dataset/VOC{}/ImageSets/Main/trainval.txt".format(year)
+    for year in [2007]:
+        data_file = "/kaggle/input/dataset/VOC{}/ImageSets/Main/trainval.txt".format(year)
         with PathManager.open(data_file) as f:
             fileids = np.loadtxt(f, dtype=np.str).tolist()
         data.extend(fileids)
     for fileid in data:
         year = "2012" if "_" in fileid else "2007"
-        dirname = os.path.join("datasets", "VOC{}".format(year))
+        dirname = os.path.join("/kaggle/input/dataset", "VOC{}".format(year))
         anno_file = os.path.join(dirname, "Annotations", fileid + ".xml")
         tree = ET.parse(anno_file)
         clses = []
@@ -44,7 +44,7 @@ def generate_seeds(args):
 
     result = {cls: {} for cls in data_per_cat.keys()}
     shots = [1, 2, 3, 5, 10]
-    for i in range(args.seeds[0], args.seeds[1]):
+    for i in range(1,20):
         random.seed(i)
         for c in data_per_cat.keys():
             c_data = []
@@ -75,6 +75,6 @@ def generate_seeds(args):
                     fp.write("\n".join(result[c][shot]) + "\n")
 
 
-if __name__ == "__main__":
-    args = parse_args()
-    generate_seeds(args)
+# if __name__ == "__main__":
+# args = parse_args()
+generate_seeds()
